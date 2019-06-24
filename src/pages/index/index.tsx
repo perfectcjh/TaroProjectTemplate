@@ -1,16 +1,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Swiper, SwiperItem } from '@tarojs/components'
+import { AtButton } from 'taro-ui'
 import './index.styl'
 
 export default class Index extends Component {
 
-  /**
-   * 指定config的类型声明为: Taro.Config
-   *
-   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-   */
   config: Config = {
     navigationBarTitleText: '首页'
   }
@@ -28,7 +22,24 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
+        <View className='carouselViewContainer'>
+          <Swiper
+           className='carouselView'
+           indicatorColor='#000000'
+           indicatorActiveColor='#333333'
+           indicatorDots
+           autoplay
+           circular>
+           <SwiperItem>
+             <View className='carouselItem'>xxx</View>
+           </SwiperItem>
+           <SwiperItem>
+             <View className='carouselItem'>xxx</View>
+           </SwiperItem>
+          </Swiper>
+        </View>
+        <Text className='text'>Hello world!</Text>
+        <AtButton type='primary'>xxx</AtButton>
       </View>
     )
   }
