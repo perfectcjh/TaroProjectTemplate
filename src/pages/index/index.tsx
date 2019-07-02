@@ -1,10 +1,9 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Swiper, SwiperItem } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
+import './index.scss'
 import { AtButton } from 'taro-ui'
-import './index.styl'
 
 export default class Index extends Component {
-
   config: Config = {
     navigationBarTitleText: '首页'
   }
@@ -22,24 +21,11 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <View className='carouselViewContainer'>
-          <Swiper
-           className='carouselView'
-           indicatorColor='#000000'
-           indicatorActiveColor='#333333'
-           indicatorDots
-           autoplay
-           circular>
-           <SwiperItem>
-             <View className='carouselItem'>xxx</View>
-           </SwiperItem>
-           <SwiperItem>
-             <View className='carouselItem'>xxx</View>
-           </SwiperItem>
-          </Swiper>
+        <View className='title'>
+          <Text>啦啦啦</Text>
+          <AtButton type='primary'>按钮文案</AtButton>
         </View>
-        <Text className='text'>Hello world!</Text>
-        <AtButton type='primary'>xxx</AtButton>
+        <Text>Hello world!</Text>
       </View>
     )
   }

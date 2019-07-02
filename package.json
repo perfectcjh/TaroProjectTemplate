@@ -6,9 +6,10 @@
   "templateInfo": {
     "name": "default",
     "typescript": true,
-    "css": "stylus"
+    "css": "sass"
   },
   "scripts": {
+    "build": "taro build --type weapp",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -36,7 +37,6 @@
     "@tarojs/taro-weapp": "1.3.2",
     "nerv-devtools": "^1.4.0",
     "nervjs": "^1.4.0",
-    "sass": "^1.21.0",
     "taro-ui": "^2.2.1"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "@types/webpack-env": "^1.13.6",
     "@tarojs/plugin-babel": "1.3.2",
     "@tarojs/plugin-csso": "1.3.2",
-    "@tarojs/plugin-stylus": "1.3.2",
+    "@tarojs/plugin-sass": "1.3.2",
     "@tarojs/plugin-uglifyjs": "1.3.2",
     "@tarojs/webpack-runner": "1.3.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
