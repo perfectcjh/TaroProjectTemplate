@@ -1,0 +1,46 @@
+.login-container {
+  width: 100%;
+  height: 100%;
+  .user-avatar-container {
+    margin-top: 240px;
+    .user-avatar {
+      margin: 0px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 60px;
+      Image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .login-btn-container {
+    margin-top: 80px;
+    .login-btn {
+      width: 500px;
+      height: 88px;
+      margin: 0px auto;
+    }
+  }
+  .login-protocal-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 28px;
+    .protocal-btn {
+      width: 28px;
+      height: 28px;
+      background-color: rgb(243, 9, 9);
+      border-radius: 15px;
+    }
+    .protocal-text-black {
+      margin-left: 12px;
+      color: black;
+    }
+    .protocal-text-yellow {
+      color: rgb(243, 9, 9);
+    }
+  }
+}
