@@ -1,13 +1,14 @@
 import HttpClient from './http-client'
 import { AppServerUrl } from '../global/app-config'
-import Taro from '@tarojs/taro'
 
 // '/api/fastLogin'
 // '/api/bindMobile'
 // '/api/getEncryptedData'
+// 'api/feedBack'
 
 class Api {
-
+  
+  // 统一调用方法
   request (path: string, params: object) {
     var httpClient = new HttpClient()
     const url = `${AppServerUrl}${path}`
