@@ -1,0 +1,18 @@
+export const enum HttpMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE'
+}
+
+export const enum HttpStatus {
+  SUCCESS = 200,
+  CLIENTERROR = 400,
+  AUTHENTICATE = 401,
+  FORBIDDEN = 403,
+  NOTFOUND = 404,
+  SERVERERROR = 500,
+  BADGATEWAY = 502,
+  SERVICEUNAVAILABLE = 503,
+  GATEWAYTIMEOUT = 504
+}

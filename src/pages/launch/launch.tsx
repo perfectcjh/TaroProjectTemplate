@@ -1,10 +1,22 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import './launch.scss'
+import Api from '../../service/api'
 
 export default class Launch extends Component {
   config: Config = {
     navigationBarTitleText: '启动页'
+  }
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      loginCode: '',
+      userEncryptedData: '',
+      userIv: '',
+      userRawData: '',
+      userSignature: ''
+    }
   }
 
   componentDidMount () { 
@@ -23,22 +35,53 @@ export default class Launch extends Component {
     })
   }
 
-  onGetUserInfo = (res) => {
-    const { errMsg } = res.detail
-    if (this.checkIsOk(errMsg)) {
+  async requestFastLogin () {
+    const path = 'api/fastLogin'
+    const params = {
+      code: this.state.loginCode,
+      encryptedData: this.state.userEncryptedData,
+      iv: this.state.userIv,
+      rawData: this.state.userRawData,
+      signature: this.state.userSignature
+    }
+    const { code, data } = await Api.request(path, params)
+    if (code === 200) {
       this.toLoginPage()
     }
   }
 
-  async miniAppLogin () {
-    const { errMsg } = await Taro.login()
+  onGetUserInfo = (res) => {
+    const { errMsg, iv, encryptedData, rawData, signature } = res.detail
     if (this.checkIsOk(errMsg)) {
-      console.log('Taro.login() ok')
+      this.setState({
+        userEncryptedData: encryptedData,
+        userIv: iv,
+        userRawData: rawData,
+        userSignature: signature
+      }, () => {
+        this.requestFastLogin()
+      })
+    } else {
+      Taro.showToast({
+        title: errMsg
+      })
+    }
+  }
+
+  async miniAppLogin () {
+    const { errMsg, code } = await Taro.login()
+    if (this.checkIsOk(errMsg)) {
+      this.setState({ 
+        loginCode: code 
+      })
+    } else {
+      Taro.showToast({
+        title: errMsg
+      })
     }
   }
 
   checkIsOk (errMsg) {
-    console.log(errMsg)
     const okMsg = ':ok'
     return errMsg.includes(okMsg)
   }

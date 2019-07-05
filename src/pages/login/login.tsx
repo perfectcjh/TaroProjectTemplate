@@ -7,12 +7,21 @@ export default class Login extends Component {
     navigationBarTitleText: '登录'
   }
 
-  componentDidMount () { }
+  componentDidMount () {
+    this.miniAppLogin()
+  }
 
   checkIsOk (errMsg) {
     console.log(errMsg)
     const okMsg = ':ok'
     return errMsg.includes(okMsg)
+  }
+
+  async miniAppLogin () {
+    const { errMsg } = await Taro.login()
+    if (this.checkIsOk(errMsg)) {
+      console.log('Taro.login() ok')
+    }
   }
   
   requestLogin () {
