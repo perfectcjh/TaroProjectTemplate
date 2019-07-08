@@ -1,6 +1,8 @@
-import Taro, { Component, Config } from '@tarojs/taro'
 import "@tarojs/async-await"
-import Index from './pages/index'
+import Taro, { Component, Config } from '@tarojs/taro'
+import { Provider } from '@tarojs/redux'
+import Launch from './pages/launch/launch'
+import configStore from './reduce/store'
 
 import './app.scss'
 import 'taro-ui/dist/style/index.scss'
@@ -10,6 +12,8 @@ import 'taro-ui/dist/style/index.scss'
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+
+const store = configStore()
 
 class App extends Component {
 
@@ -39,7 +43,9 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Index />
+      <Provider store={store}></Provider>
+        <Launch />
+      </Provider>
     )
   }
 }

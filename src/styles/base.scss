@@ -1,0 +1,56 @@
+@mixin fz($size) {
+  font-size: 2 * $size;
+}
+  
+// flex grid
+@mixin flex-f() {
+  display: flex;
+}
+@mixin flex-align() {
+  @include flex-f();
+  align-items: center;
+}
+@mixin flex-between() {
+  @include flex-f();
+  justify-content: space-between;
+}
+@mixin flex-align-center() {
+  @include flex-align();
+  justify-content: center;
+}
+@mixin flex-align-between() {
+  @include flex-between();
+  align-items: center;
+}
+@mixin flex-col() {
+  @include flex-f();
+  flex-direction: column;
+}
+@mixin flex-col-between() {
+  @include flex-col();
+  justify-content: space-between;
+}
+
+// view style
+@mixin wh($value) {
+  width: $value;
+  height: $value;
+}
+
+
+@mixin tc() {
+  text-align: center;
+}
+@mixin text-over($num) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+@mixin wb() {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
